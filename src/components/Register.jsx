@@ -28,7 +28,7 @@ class Register extends Component {
             if(takenUser.length > 0){
                 return alert(`Username ${username} sudah terpakai`)
             } 
-            
+
             let takenEmail = res.data.filter((user) => {
                 return user.email == email
             })
@@ -59,12 +59,12 @@ class Register extends Component {
                             <div className="card-title ">
                                 <h4>Username</h4>
                             </div>
-                            <input ref={(input) => {this.username = input}} type='text' className='form-control' />
+                            <input ref={(input) => {this.username = input}} type='text' className='form-control' required/>
 
                             <div className="card-title ">
                                 <h4>Email</h4>
                             </div>
-                            <input ref={(input) => {this.email = input}} type='text' className='form-control'/>
+                            <input ref={(input) => {this.email = input}} type='text' className='form-control' required/>
 
                             <div className="card-title ">
                                 <h4>Password</h4>
@@ -75,7 +75,7 @@ class Register extends Component {
                         <button className="btn btn-success btn-block" onClick={this.onButtonClick}>Register</button>
                     </div>
                 </div>
-            </div>
+                </div>
             </div>
         )
     }
