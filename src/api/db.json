@@ -1,5 +1,22 @@
 {
-    "users": [
-        
-    ]
+  "users": [
+    {
+      "username": "rochafi",
+      "email": "rochafi@gmail.com",
+      "pswd": "satuduatiga",
+      "id": 1
+    },
+    {
+      "username": "alvinn",
+      "email": "alvinn@gmail.com",
+      "pswd": "satuduatiga",
+      "id": 2
+    },
+    {
+      "username": "rochafi26",
+      "email": "rochafi26@gmail.com",
+      "pswd": "satuduatiga",
+      "id": 3
+    }
+  ]
 }

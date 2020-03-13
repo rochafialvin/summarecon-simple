@@ -1,6 +1,50 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class Register extends Component {
+
+
+    onButtonClick = () => {
+        // Ambil value
+        let username = this.username.value
+        let email = this.email.value
+        let pswd = this.password.value
+
+        // Simpan di json
+        // GET, POST, PUT, PATCH
+        let linkPost = 'http://localhost:2020/users'
+        let linkGet = 'http://localhost:2020/users'
+        let data = {username, email, pswd}
+
+        // Get data
+        axios.get(linkGet).then((res) => {
+            // Check duplicate data
+            // res.data = [{}, {}, {}]
+            // user = {username, email, pswd}
+            let takenUser = res.data.filter((user) => {
+                return user.username == username
+            })
+
+            if(takenUser.length > 0){
+                return alert(`Username ${username} sudah terpakai`)
+            } 
+            
+            let takenEmail = res.data.filter((user) => {
+                return user.email == email
+            })
+
+            if(takenEmail.length > 0){
+                return alert(`Email ${email} sudah terpakai`)
+            }
+
+            // Post data
+            axios.post(linkPost, data).then((res) => {alert('Register berhasil')})
+
+        })
+
+    }
+
+
     render() {
         return (
             <div className="container-fluid">
