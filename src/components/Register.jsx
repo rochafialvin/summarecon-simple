@@ -12,12 +12,11 @@ class Register extends Component {
 
         // Simpan di json
         // GET, POST, PUT, PATCH
-        let linkPost = 'http://localhost:2020/users'
-        let linkGet = 'http://localhost:2020/users'
+        let link = 'http://localhost:2020/users'
         let data = {username, email, pswd}
 
         // Get data
-        axios.get(linkGet).then((res) => {
+        axios.get(link).then((res) => {
             // Check duplicate data
             // res.data = [{}, {}, {}]
             // user = {username, email, pswd}
@@ -38,7 +37,7 @@ class Register extends Component {
             }
 
             // Post data
-            axios.post(linkPost, data).then((res) => {alert('Register berhasil')})
+            axios.post(link, data).then((res) => {alert('Register berhasil')})
 
         })
 
