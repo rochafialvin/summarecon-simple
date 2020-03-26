@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+// Digunakan untuk menghubungkan komponen dengan redux
 import { connect } from 'react-redux'
-
+// Import action creator
 import {onLoginUser} from '../actions/index'
 
 class Login extends Component {
