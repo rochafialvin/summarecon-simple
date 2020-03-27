@@ -4,7 +4,7 @@
 
 let init = {
     id: "",
-    username : ""
+    username : "",
 }
 
 export default (state = init, action) => {
@@ -13,7 +13,7 @@ export default (state = init, action) => {
             return {...state, id : action.payload.id, username: action.payload.username}
 
         case 'LOGOUT_SUCCESS' :
-
+            return {...state, id : "", username: ""}
 
         default :
             return state

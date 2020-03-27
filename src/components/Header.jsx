@@ -16,6 +16,7 @@ import {
 } from 'reactstrap';
 
 import {connect} from 'react-redux'
+import {onLogoutUser} from '../actions/index'
 
 class Header extends Component {
 
@@ -24,8 +25,6 @@ class Header extends Component {
     }
 
     toggle = () => this.setState({ isOpen : !this.state.isOpen })
-
-    onLogout = () => {alert('Success')}
 
     // Menentukan apa yang harus ditampilkan di header (Register dan login) atau (Hello, username)
     renderNav = () => {
@@ -62,7 +61,7 @@ class Header extends Component {
 
                         <DropdownItem divider />
 
-                        <DropdownItem onClick={this.onLogout}>
+                        <DropdownItem onClick={this.props.onLogoutUser}>
                             Logout
                         </DropdownItem>
 
@@ -95,7 +94,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps, {onLogoutUser})(Header)
 
 // const [isOpen, setIsOpen] = useState(false);
 // const togglex = () => setIsOpen(!isOpen);
