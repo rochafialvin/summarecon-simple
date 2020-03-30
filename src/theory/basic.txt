@@ -27,3 +27,10 @@ Truthy values (value yang akan dianggap sebagai TRUE)
     - []
     - {}
 
+
+onClick with parameter
+    - Saat sebuah function yang di panggil ketika tombol di klik membutuhkan parameter (data inputan)
+    - Maka function tersebut harus di kurung menggunakan arrow function
+    - contoh :
+        - awal :  this.deleteProduct(id)
+        - menjadi : () => { this.deleteProduct(id) }

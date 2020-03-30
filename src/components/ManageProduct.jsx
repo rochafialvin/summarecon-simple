@@ -7,19 +7,10 @@ class ManageProduct extends Component{
         products: []
     }
 
-    // 2
+    // Running hanya sekali, setelah proses render yang pertama
     componentDidMount(){
         this.getData()
     }
-
-    getData = () => {
-        axios.get(
-            'http://localhost:2020/products'
-        ).then((res) => {
-            this.setState({ products: res.data })
-        })
-    }
-
 
     // Render List
     renderList = () => {
@@ -36,13 +27,22 @@ class ManageProduct extends Component{
                     <td><img className="list" src={product.src} alt=""/></td>
                     <td>
                         <button className="btn btn-outline-primary btn-block btn-sm" >Edit</button>
-                        <button className="btn btn-outline-danger btn-block btn-sm" >Delete</button>
+                        <button onClick={ () => { this.deleteProduct(product.id) } } className="btn btn-outline-danger btn-block btn-sm" >Delete</button>
                     </td>
                 </tr>
             )
         })
     }
 
+    // Ambil data
+    getData = () => {
+        axios.get(
+            'http://localhost:2020/products'
+        ).then((res) => {
+            this.setState({ products: res.data })
+        })
+    }
+    
     // Input Data
     addProduct = () => {
         // Ambil data dari "Input Product"
@@ -57,14 +57,16 @@ class ManageProduct extends Component{
             {name: name_source, desc: desc_source, price: price_source, src: src_source}
 
         ).then((res) => {
-            
             this.getData()
-
         })
 
-        
-
     }
+
+    // Delete Data
+    deleteProduct = (id) => {
+        alert(`Product ini memiliki id ke ${id}`)
+    }
+
 
     // 1
     render(){
