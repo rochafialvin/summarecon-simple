@@ -9,17 +9,19 @@ class ManageProduct extends Component{
 
     // 2
     componentDidMount(){
-        
+        this.getData()
+    }
+
+    getData = () => {
         axios.get(
             'http://localhost:2020/products'
         ).then((res) => {
             this.setState({ products: res.data })
         })
-
     }
 
 
-    // Tugas hari sabtu : Render Map
+    // Render List
     renderList = () => {
         // this.state.products = [ {}, {}, {} ]
         // product = {id, name, desc, price, src}
@@ -31,7 +33,7 @@ class ManageProduct extends Component{
                     <td>{product.desc}</td>
                     <td>{product.price}</td>
                     {/* <td><img width="50" src={product.src} alt=""/></td> */}
-                    <td><img width="50" src={product.src} alt=""/></td>
+                    <td><img className="list" src={product.src} alt=""/></td>
                     <td>
                         <button className="btn btn-outline-primary btn-block btn-sm" >Edit</button>
                         <button className="btn btn-outline-danger btn-block btn-sm" >Delete</button>
@@ -41,13 +43,36 @@ class ManageProduct extends Component{
         })
     }
 
+    // Input Data
+    addProduct = () => {
+        // Ambil data dari "Input Product"
+        let name_source = this.name.value
+        let desc_source = this.desc.value
+        let price_source = this.price.value
+        let src_source = this.src.value
+        
+        // Taruh data ke database "db.json"
+        axios.post(
+            'http://localhost:2020/products',
+            {name: name_source, desc: desc_source, price: price_source, src: src_source}
+
+        ).then((res) => {
+            
+            this.getData()
+
+        })
+
+        
+
+    }
+
     // 1
     render(){
         return (
             <div className="container">
                 {/* List Product */}
                 <h1 className="text-center display-4">Manage Product</h1>
-                <table class="table table-hover text-center mb-5">
+                <table className="table table-hover text-center mb-5">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -63,9 +88,19 @@ class ManageProduct extends Component{
                     </tbody>
                 </table>
 
-                {/* Tugas hari minggu */}
                 {/* Input Procduct */}
-
+                <h1 className="text-center display-4">Input Product</h1>
+                <table class="table table-hover text-center mb-5">
+                    <thead>
+                        <tr>
+                            <td scope="col"> <input ref={(input) => {this.name = input}} placeholder="name" className='form-control' type="text" /> </td>
+                            <td scope="col"> <input ref={(input) => {this.desc = input}} placeholder="description" className='form-control' type="text" /> </td>
+                            <td scope="col"> <input ref={(input) => {this.price = input}} placeholder="price" className='form-control' type="text" /> </td>
+                            <td scope="col"> <input ref={(input) => {this.src = input}} placeholder="image" className='form-control' type="text" /> </td>
+                            <td scope="col"> <button onClick={this.addProduct}  className="btn btn-outline-primary btn-block btn-sm">input</button> </td>
+                        </tr>
+                    </thead>
+                </table> 
 
             </div>
         )
