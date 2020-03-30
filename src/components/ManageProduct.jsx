@@ -64,7 +64,7 @@ class ManageProduct extends Component{
 
     // Delete Data
     deleteProduct = (id) => {
-        alert(`Product ini memiliki id ke ${id}`)
+        axios.delete('http://localhost:2020/products/id product')
     }
 
 
