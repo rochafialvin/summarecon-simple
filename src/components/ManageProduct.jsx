@@ -6,6 +6,7 @@ class ManageProduct extends Component{
 
     state = {
         products: [],
+        editProduct : {},
         modal : false
     }
 
@@ -41,7 +42,7 @@ class ManageProduct extends Component{
         axios.get(
             'http://localhost:2020/products'
         ).then((res) => {
-            this.setState({ products: res.data })
+            this.setState({ products: res.data, modal : false })
         })
     }
     
@@ -50,7 +51,7 @@ class ManageProduct extends Component{
         // Ambil data dari "Input Product"
         let name_source = this.name.value
         let desc_source = this.desc.value
-        let price_source = this.price.value
+        let price_source = parseInt(this.price.value)
         let src_source = this.src.value
         
         // Taruh data ke database "db.json"
@@ -81,14 +82,32 @@ class ManageProduct extends Component{
         // res.data = {id, name, price, desc, src}
         axios.get(`http://localhost:2020/products/${id}`)
         .then((res) => { 
-            this.setState({ modal : true })
+            this.setState({ modal : true, editProduct : res.data })
          })
     }
 
     // Save
+    onSaveProduct = () => {
+        // Ambil data
+        let name = this.editName.value ? this.editName.value : this.state.editProduct.name
+        let price = this.editPrice.value ? this.editPrice.value : this.state.editProduct.price
+        let desc = this.editDesc.value ? this.editDesc.value : this.state.editProduct.desc
+        let src = this.editSrc.value ? this.editSrc.value : this.state.editProduct.src
+
+        // Edit data
+        axios.patch(
+            `http://localhost:2020/products/${this.state.editProduct.id}`,
+            {
+                name, price, desc, src
+            }
+        ).then((res) => {
+            this.getData()
+        })
+        
+    }
 
     // Cancel
-    onCancelToggle = () => {
+        onCancelToggle = () => {
         this.setState({ modal : false })
     }
 
@@ -134,14 +153,14 @@ class ManageProduct extends Component{
                 <Modal isOpen={this.state.modal} >
                     <ModalHeader >Edit your product</ModalHeader>
                     <ModalBody>
-                        Name : <input className="form-control" type="text" ref={(input) => { this.editName = input }}/>
-                        Desc : <input className="form-control" type="text" ref={(input) => { this.editDesc = input }}/>
-                        Price : <input className="form-control" type="text" ref={(input) => { this.editPrice = input }}/>
-                        Img : <input className="form-control" type="text" ref={(input) => { this.editSrc = input }}/>
+                        Name : <input className="form-control" type="text" ref={(input) => { this.editName = input }} placeholder={this.state.editProduct.name}/>
+                        Desc : <input className="form-control" type="text" ref={(input) => { this.editDesc = input }} placeholder={this.state.editProduct.desc}/>
+                        Price : <input className="form-control" type="text" ref={(input) => { this.editPrice = input }} placeholder={this.state.editProduct.price}/>
+                        Img : <input className="form-control" type="text" ref={(input) => { this.editSrc = input }} placeholder={this.state.editProduct.src}/>
                     </ModalBody>
                     <ModalFooter>
                         <Button outline color="warning" onClick={this.onCancelToggle} >Cancel</Button>
-                        <Button outline color="success" >Save</Button>
+                        <Button outline color="success" onClick={this.onSaveProduct} >Save</Button>
                     </ModalFooter>
                 </Modal>
 
