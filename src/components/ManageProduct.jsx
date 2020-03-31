@@ -110,7 +110,7 @@ class ManageProduct extends Component{
     }
 
     // Cancel
-        onCancelToggle = () => {
+    onCancelToggle = () => {
         this.setState({ modal : false })
     }
 
@@ -152,7 +152,12 @@ class ManageProduct extends Component{
                 </table>
 
                 {/* Modal Component */}
-                <ModalEdit modal={this.state.modal} editProduct={this.state.editProduct} getData={this.getData} />
+                <ModalEdit 
+                    a={this.state.modal} 
+                    b={this.state.editProduct}
+                    c={this.onCancelToggle}
+                    d={this.onSaveProduct}
+                />
             </div>
         )
     }

@@ -38,10 +38,9 @@ class Login extends Component {
 
         if(!this.props.uname){ // Jika belum login
             return (
-                <div>
-                    <div className="container-fluid">
+                <div className="container-fluid login">
                     <div className="row">
-                        <div className=" col-5 mx-auto mt-5 card">
+                        <div className=" col-5 mx-auto card">
                             <div className="card-body">
                                 <div className="border-bottom border-secondary card-title text-center">
                                     <h1>Login</h1>
@@ -61,7 +60,6 @@ class Login extends Component {
     
                                 <button className="btn btn-success btn-block" onClick={this.onButtonClick}>Login</button>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>

@@ -2,3 +2,8 @@ table img.list {
     width: 60px !important;
     border-radius: 200px !important;
 }
+
+div.login {
+    background-image: url('https://wallpaperaccess.com/full/802645.jpg');
+    height: 94vh;
+}
