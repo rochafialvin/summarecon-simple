@@ -47,7 +47,7 @@ class Login extends Component {
                                     <h1>Login</h1>
                                 </div>
     
-                                <form className='form-group'>
+                                <forml className='form-group'>
                                     <div className="card-title ">
                                         <h4>Username</h4>
                                     </div>
@@ -57,7 +57,7 @@ class Login extends Component {
                                         <h4>Password</h4>
                                     </div>
                                     <input ref={(input) => {this.password = input}} type='password' className='form-control'/>
-                                </form>
+                                </forml>
     
                                 <button className="btn btn-success btn-block" onClick={this.onButtonClick}>Login</button>
                             </div>

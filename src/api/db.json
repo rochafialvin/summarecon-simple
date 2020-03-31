@@ -47,27 +47,6 @@
       "desc": "Lorem ipsum dolor sit amet",
       "price": 178000,
       "src": "https://www.pngfind.com/pngs/m/162-1621689_cloud9-lcs-jersey-cloud-9-csgo-jersey-hd.png"
-    },
-    {
-      "id": 5,
-      "name": "T-Shirt V Neck",
-      "desc": "Lorem ipsum dolor sit amet",
-      "price": 179000,
-      "src": "https://www.pngfind.com/pngs/m/162-1621689_cloud9-lcs-jersey-cloud-9-csgo-jersey-hd.png"
-    },
-    {
-      "name": "Jacket",
-      "desc": "lorem ipsum dolor sit amet",
-      "price": "9800",
-      "src": "https://www.pngfind.com/pngs/m/162-1621689_cloud9-lcs-jersey-cloud-9-csgo-jersey-hd.png",
-      "id": 6
-    },
-    {
-      "name": "Red Hat",
-      "desc": "Best distribution for you company",
-      "price": "1290000",
-      "src": "https://www.pngfind.com/pngs/m/162-1621689_cloud9-lcs-jersey-cloud-9-csgo-jersey-hd.png",
-      "id": 7
     }
   ]
 }
