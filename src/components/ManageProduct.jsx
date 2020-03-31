@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
+// import modal
+import ModalEdit from './ModalEdit'
+
 class ManageProduct extends Component{
 
     state = {
@@ -148,22 +151,8 @@ class ManageProduct extends Component{
                     </thead>
                 </table>
 
-                {/* Modal Edit */}
-                {/* <Modal isOpen={this.state.modal} toggle = {this.onCancelToggle} > jika ingin klik sembarang menutup modal*/}
-                <Modal isOpen={this.state.modal} >
-                    <ModalHeader >Edit your product</ModalHeader>
-                    <ModalBody>
-                        Name : <input className="form-control" type="text" ref={(input) => { this.editName = input }} placeholder={this.state.editProduct.name}/>
-                        Desc : <input className="form-control" type="text" ref={(input) => { this.editDesc = input }} placeholder={this.state.editProduct.desc}/>
-                        Price : <input className="form-control" type="text" ref={(input) => { this.editPrice = input }} placeholder={this.state.editProduct.price}/>
-                        Img : <input className="form-control" type="text" ref={(input) => { this.editSrc = input }} placeholder={this.state.editProduct.src}/>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button outline color="warning" onClick={this.onCancelToggle} >Cancel</Button>
-                        <Button outline color="success" onClick={this.onSaveProduct} >Save</Button>
-                    </ModalFooter>
-                </Modal>
-
+                {/* Modal Component */}
+                <ModalEdit modal={this.state.modal} editProduct={this.state.editProduct} getData={this.getData} />
             </div>
         )
     }
