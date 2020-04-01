@@ -9,7 +9,22 @@ import Login from './Login'
 import ManageProduct from './ManageProduct'
 import DetailProduct from './DetailProduct'
 
+// Keeplogin
+import {onLoginUser} from '../actions/index'
+import {connect} from 'react-redux'
+
 class App extends Component{
+
+
+    componentDidMount(){
+        let userData = localStorage.getItem('userData')
+        let user = JSON.parse(userData)
+
+        if(user){
+            this.props.onLoginUser(user)
+        }
+    }
+
     render(){
         return(
             <BrowserRouter>
@@ -26,4 +41,4 @@ class App extends Component{
     }
 }
 
-export default App
+export default connect(null, {onLoginUser})(App)

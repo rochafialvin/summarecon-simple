@@ -51,13 +51,14 @@ class Header extends Component {
                         Hello, {this.props.uname}
                     </DropdownToggle>
                     <DropdownMenu right>
-                        <DropdownItem>
-                            Option 1
-                        </DropdownItem>
 
-                        <DropdownItem>
-                            Option 2
-                        </DropdownItem>
+                        <NavLink tag={Link} to="/manageproduct" >
+                            <DropdownItem> Manage Product</DropdownItem>
+                        </NavLink>
+
+                        <NavLink tag={Link} to="/">
+                            <DropdownItem>Cart</DropdownItem>
+                        </NavLink>
 
                         <DropdownItem divider />
 
