@@ -89,12 +89,15 @@ class ManageProduct extends Component{
     }
 
     // Save
-    onSaveProduct = () => {
+    onSaveProduct = (editObj) => {
+
+        // editObj { editName: "New Name", editDesc: "New Description", editPrice: "New Price", editSrc: "New Image" }
+
         // Ambil data
-        let name = this.editName.value ? this.editName.value : this.state.editProduct.name
-        let price = parseInt(this.editPrice.value ? this.editPrice.value : this.state.editProduct.price)
-        let desc = this.editDesc.value ? this.editDesc.value : this.state.editProduct.desc
-        let src = this.editSrc.value ? this.editSrc.value : this.state.editProduct.src
+        let name = editObj.editName ? editObj.editName : this.state.editProduct.name
+        let price = parseInt(editObj.editPrice ? editObj.editPrice : this.state.editProduct.price)
+        let desc = editObj.editDesc ? editObj.editDesc : this.state.editProduct.desc
+        let src = editObj.editSrc ? editObj.editSrc : this.state.editProduct.src
 
         // Edit data
         axios.patch(

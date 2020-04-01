@@ -29,7 +29,9 @@ class Home extends Component {
                 <div className="card col-lg-5 col-xl-3 mx-auto mx-xl-4 my-3">
                     <img className="card-img-top" src={product.src} alt=""/>
                     <div className="card-body">
-                        <h5 className="card-title">{product.name}</h5>
+                        <div  style={{height: 50}}>
+                            <h5 className="card-title">{product.name}</h5>
+                        </div>
                         <p className="card-text">{product.desc}</p>
                         <p className="card-text">Rp. {product.price}</p>
                         <input className="form-control" type="text" placeholder="Jumlah Qty"/>

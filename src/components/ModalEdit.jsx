@@ -3,6 +3,14 @@ import axios from 'axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class ModalEdit extends Component {
+
+    state = {
+        editName : "",
+        editDesc : "",
+        editPrice : "",
+        editSrc : ""
+    }
+
     render() {
         return (
             <div>
@@ -10,14 +18,15 @@ export default class ModalEdit extends Component {
                 <Modal isOpen={this.props.a} >
                     <ModalHeader >Edit your product</ModalHeader>
                     <ModalBody>
-                        Name : <input className="form-control" type="text" ref={(input) => { this.editName = input }} placeholder={this.props.b.name}/>
-                        Desc : <input className="form-control" type="text" ref={(input) => { this.editDesc = input }} placeholder={this.props.b.desc}/>
-                        Price : <input className="form-control" type="text" ref={(input) => { this.editPrice = input }} placeholder={this.props.b.price}/>
-                        Img : <input className="form-control" type="text" ref={(input) => { this.editSrc = input }} placeholder={this.props.b.src}/>
+                        Name : <input className="form-control" type="text" onChange = {(e) => { this.setState({ editName: e.target.value }) }}  placeholder={this.props.b.name}/>
+                        Desc : <input className="form-control" type="text" onChange = {(e) => { this.setState({ editDesc: e.target.value }) }}  placeholder={this.props.b.desc}/>
+                        Price : <input className="form-control" type="text" onChange = {(e) => { this.setState({ editPrice: e.target.value }) }}  placeholder={this.props.b.price}/>
+                        Img : <input className="form-control" type="text" onChange = {(e) => { this.setState({ editSrc: e.target.value }) }}  placeholder={this.props.b.src}/>
                     </ModalBody>
                     <ModalFooter>
                         <Button outline color="warning" onClick={this.props.c} >Cancel</Button>
-                        <Button outline color="success" onClick={this.props.d} >Save</Button>
+                        {/* this.state akan masuk ke 'editObj' pada function 'onSaveProduct' di komponen 'ManageProduct' */}
+                        <Button outline color="success" onClick={ () => { this.props.d(this.state) } } >Save</Button>
                     </ModalFooter>
                 </Modal>
 
