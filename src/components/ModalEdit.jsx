@@ -18,7 +18,7 @@ export default class ModalEdit extends Component {
                 <Modal isOpen={this.props.a} >
                     <ModalHeader >Edit your product</ModalHeader>
                     <ModalBody>
-                        Name : <input className="form-control" type="text" onChange = {(e) => { this.setState({ editName: e.target.value }) }}  placeholder={this.props.b.name}/>
+                        Name : <input className="form-control" type="text" onChange = {(e) => { this.setState({ editDesc: e.target.value }) }}  placeholder={this.props.b.name}/>
                         Desc : <input className="form-control" type="text" onChange = {(e) => { this.setState({ editDesc: e.target.value }) }}  placeholder={this.props.b.desc}/>
                         Price : <input className="form-control" type="text" onChange = {(e) => { this.setState({ editPrice: e.target.value }) }}  placeholder={this.props.b.price}/>
                         Img : <input className="form-control" type="text" onChange = {(e) => { this.setState({ editSrc: e.target.value }) }}  placeholder={this.props.b.src}/>

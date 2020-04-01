@@ -7,6 +7,7 @@ import Home from './Home'
 import Register from './Register'
 import Login from './Login'
 import ManageProduct from './ManageProduct'
+import DetailProduct from './DetailProduct'
 
 class App extends Component{
     render(){
@@ -18,6 +19,7 @@ class App extends Component{
                     <Route path="/register" component={Register} />
                     <Route path="/login" component={Login} />
                     <Route path="/manageproduct" component={ManageProduct} />
+                    <Route path="/detailproduct/:idPrdct" component={DetailProduct} />
                 </div>
             </BrowserRouter>
         )

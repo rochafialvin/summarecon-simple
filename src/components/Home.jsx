@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 class Home extends Component {
 
@@ -35,7 +36,9 @@ class Home extends Component {
                         <p className="card-text">{product.desc}</p>
                         <p className="card-text">Rp. {product.price}</p>
                         <input className="form-control" type="text" placeholder="Jumlah Qty"/>
-                        <button className="btn btn-secondary btn-block my-2">Detail</button>
+                        <Link to={`/detailproduct/${product.id}`}>
+                            <button className="btn btn-secondary btn-block my-2">Detail</button>
+                        </Link>
                         <button className="btn btn-primary btn-block">Add to Cart</button>
                     </div>
                 </div>
