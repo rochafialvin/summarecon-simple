@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-// import modal
 import ModalEdit from './ModalEdit'
 
 class ManageProduct extends Component{
@@ -93,7 +92,7 @@ class ManageProduct extends Component{
     onSaveProduct = () => {
         // Ambil data
         let name = this.editName.value ? this.editName.value : this.state.editProduct.name
-        let price = this.editPrice.value ? this.editPrice.value : this.state.editProduct.price
+        let price = parseInt(this.editPrice.value ? this.editPrice.value : this.state.editProduct.price)
         let desc = this.editDesc.value ? this.editDesc.value : this.state.editProduct.desc
         let src = this.editSrc.value ? this.editSrc.value : this.state.editProduct.src
 
