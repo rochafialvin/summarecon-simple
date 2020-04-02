@@ -5,7 +5,8 @@ import {Link} from 'react-router-dom'
 class Home extends Component {
 
     state = {
-        products : []
+        products : [], // 7 products
+        searchProducts : [] // 3 products
     }
 
 
@@ -16,12 +17,12 @@ class Home extends Component {
     getProducts = () => {
         axios.get('http://localhost:2020/products')
         .then((res) => {
-            this.setState({ products: res.data })
+            this.setState({ products: res.data, searchProducts: res.data })
         })
     }
 
     renderProducts = () => {
-        return this.state.products.map((product) => {
+        return this.state.searchProducts.map((product) => {
 
             // Untuk memisahkan setiap 3 digit angka dengan karakter titik.
             product.price = product.price.toLocaleString('in')
@@ -46,6 +47,18 @@ class Home extends Component {
         })
     }
 
+    onBtnSearch = () => {
+        let keyword = this.name.value
+
+        let filterResult = this.state.products.filter((product) => {
+            return (
+                product.name.toLowerCase().includes(keyword.toLowerCase())
+            )
+        })
+
+        this.setState({ searchProducts: filterResult })
+    }
+
     render() {
         return (
             <div className="container-fluid">
@@ -67,7 +80,7 @@ class Home extends Component {
                                     <input ref={ (input) => { this.min = input } } className="form-control mb-2" type="text"/>
                                     <input ref={ (input) => { this.max = input } } className="form-control" type="text"/>
 
-                                    <button className="btn btn-block btn-outline-primary mt-5" >Search</button>
+                                    <button onClick={this.onBtnSearch} className="btn btn-block btn-outline-primary mt-5" >Search</button>
                                     <button className="btn btn-block btn-outline-danger" >Reset</button>
                                 </div>
 

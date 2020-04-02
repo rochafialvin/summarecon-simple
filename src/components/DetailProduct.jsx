@@ -19,7 +19,7 @@ export default class DetailProduct extends Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-                    <div className="card col5 mx-auto my-3 ">
+                    <div className="card col-5 mx-auto my-3 ">
                         <img className="card-img-top" src={this.state.product.src} alt=""/>
                         <div className="card-body">
                             <div  style={{height: 50}}>
