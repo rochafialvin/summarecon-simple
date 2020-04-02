@@ -23,7 +23,7 @@ class ManageProduct extends Component{
         // product = {id, name, desc, price, src}
         return this.state.products.map((product) => {
             return(
-                <tr>
+                <tr key={product.id} >
                     <td>{product.id}</td>
                     <td>{product.name}</td>
                     <td>{product.desc}</td>
@@ -141,7 +141,7 @@ class ManageProduct extends Component{
 
                 {/* Input Procduct */}
                 <h1 className="text-center display-4">Input Product</h1>
-                <table class="table table-hover text-center mb-5">
+                <table className="table table-hover text-center mb-5">
                     <thead>
                         <tr>
                             <td scope="col"> <input ref={(input) => {this.name = input}} placeholder="name" className='form-control' type="text" /> </td>

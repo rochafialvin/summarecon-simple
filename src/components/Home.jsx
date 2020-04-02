@@ -6,7 +6,6 @@ class Home extends Component {
 
     state = {
         products : [], // 7 products
-        searchProducts : [] // 3 products
     }
 
 
@@ -17,18 +16,18 @@ class Home extends Component {
     getProducts = () => {
         axios.get('http://localhost:2020/products')
         .then((res) => {
-            this.setState({ products: res.data, searchProducts: res.data })
+            this.setState({ products: res.data })
         })
     }
 
     renderProducts = () => {
-        return this.state.searchProducts.map((product) => {
+        return this.state.products.map((product) => {
 
             // Untuk memisahkan setiap 3 digit angka dengan karakter titik.
             product.price = product.price.toLocaleString('in')
 
             return (
-                <div className="card col-lg-5 col-xl-3 mx-auto mx-xl-4 my-3">
+                <div key={product.id} className="card col-lg-5 col-xl-3 mx-auto mx-xl-4 my-3">
                     <img className="card-img-top" src={product.src} alt=""/>
                     <div className="card-body">
                         <div  style={{height: 50}}>
@@ -48,15 +47,20 @@ class Home extends Component {
     }
 
     onBtnSearch = () => {
-        let keyword = this.name.value
+        axios.get('http://localhost:2020/products')
+        .then((res) => {
+            
+            let keyword = this.name.value
 
-        let filterResult = this.state.products.filter((product) => {
-            return (
-                product.name.toLowerCase().includes(keyword.toLowerCase())
-            )
+            let filterResult = res.data.filter((product) => {
+                return (
+                    product.name.toLowerCase().includes(keyword.toLowerCase())
+                )
+            })
+
+            this.setState({ products: filterResult })
         })
 
-        this.setState({ searchProducts: filterResult })
     }
 
     render() {
@@ -77,8 +81,8 @@ class Home extends Component {
                                     <input ref={ (input) => { this.name = input } } className="form-control" type="text"/>
 
                                     <h4>Price</h4>
-                                    <input ref={ (input) => { this.min = input } } className="form-control mb-2" type="text"/>
-                                    <input ref={ (input) => { this.max = input } } className="form-control" type="text"/>
+                                    <input ref={ (input) => { this.min = input } } placeholder="Minimum" className="form-control mb-2" type="text"/>
+                                    <input ref={ (input) => { this.max = input } } placeholder="Maximum" className="form-control" type="text"/>
 
                                     <button onClick={this.onBtnSearch} className="btn btn-block btn-outline-primary mt-5" >Search</button>
                                     <button className="btn btn-block btn-outline-danger" >Reset</button>
