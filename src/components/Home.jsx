@@ -50,13 +50,43 @@ class Home extends Component {
         axios.get('http://localhost:2020/products')
         .then((res) => {
             
-            let keyword = this.name.value
+            // let keyword = this.name.value
 
-            let filterResult = res.data.filter((product) => {
-                return (
-                    product.name.toLowerCase().includes(keyword.toLowerCase())
-                )
-            })
+            // let filterResult = res.data.filter((product) => {
+            //     return (
+            //         product.name.toLowerCase().includes(keyword.toLowerCase())
+            //     )
+            // })
+            
+            // Price
+
+            let min = parseInt(this.min.value) // 90.000
+            let max = parseInt(this.max.value)
+
+            if(isNaN(max)){ // Min
+                var filterResult = res.data.filter((data) => {
+                    return (
+                        data.price >= min
+                    )
+                }) 
+            }
+            else if(isNaN(min)){ // Max
+                var filterResult = res.data.filter((data) => {
+                    return (
+                        data.price <= max
+                    )
+                }) 
+
+            } else { // Min Max
+                var filterResult = res.data.filter((data) => {
+                    return (
+                        data.price >= min && data.price <= max
+                    )
+                }) 
+
+            }
+        
+
 
             this.setState({ products: filterResult })
         })
