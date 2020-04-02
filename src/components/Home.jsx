@@ -52,7 +52,27 @@ class Home extends Component {
                 <div className="row">
                     {/* Search Box */}
                     <div className="col-10 col-lg-3 col-xl-2">
-                        <h1 className="text-center display-3">Search Box</h1>
+                        <div className="mt-3">
+                            <div className="card">
+
+                                <div className=" border-bottom border-secondary card-title">
+                                    <h1 className="text-center">Search</h1>
+                                </div>
+
+                                <div className="card-body">
+                                    <h4>Name</h4>
+                                    <input ref={ (input) => { this.name = input } } className="form-control" type="text"/>
+
+                                    <h4>Price</h4>
+                                    <input ref={ (input) => { this.min = input } } className="form-control mb-2" type="text"/>
+                                    <input ref={ (input) => { this.max = input } } className="form-control" type="text"/>
+
+                                    <button className="btn btn-block btn-outline-primary mt-5" >Search</button>
+                                    <button className="btn btn-block btn-outline-danger" >Reset</button>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
                     {/* List Products */}
