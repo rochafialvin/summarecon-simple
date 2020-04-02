@@ -50,43 +50,44 @@ class Home extends Component {
         axios.get('http://localhost:2020/products')
         .then((res) => {
             
-            // let keyword = this.name.value
-
-            // let filterResult = res.data.filter((product) => {
-            //     return (
-            //         product.name.toLowerCase().includes(keyword.toLowerCase())
-            //     )
-            // })
-            
-            // Price
-
-            let min = parseInt(this.min.value) // 90.000
+            let keyword = this.name.value
+            let min = parseInt(this.min.value) 
             let max = parseInt(this.max.value)
+            let filterResult = []
 
-            if(isNaN(max)){ // Min
-                var filterResult = res.data.filter((data) => {
+            if(isNaN(min) && isNaN(max)){ // Search by Name
+                filterResult = res.data.filter((data) => {
                     return (
+                        data.name.toLowerCase().includes(keyword.toLowerCase())
+                    )
+                })
+
+            } else if (isNaN(max)){
+                filterResult = res.data.filter((data) => { // Search by Minimum and Name
+                    return (
+                        data.name.toLowerCase().includes(keyword.toLowerCase())&&
                         data.price >= min
                     )
-                }) 
-            }
-            else if(isNaN(min)){ // Max
-                var filterResult = res.data.filter((data) => {
+                })
+
+            } else if (isNaN(min)){
+                filterResult = res.data.filter((data) => { // Search by Maximum and Name
                     return (
+                        data.name.toLowerCase().includes(keyword.toLowerCase())&&
                         data.price <= max
                     )
-                }) 
+                })
 
-            } else { // Min Max
-                var filterResult = res.data.filter((data) => {
+            } else {
+                filterResult = res.data.filter((data) => { // Search by Name, Minimum, and Maximum
                     return (
-                        data.price >= min && data.price <= max
+                        data.name.toLowerCase().includes(keyword.toLowerCase()) &&
+                        data.price >= min &&
+                        data.price <= max
                     )
-                }) 
-
+                })
             }
-        
-
+            
 
             this.setState({ products: filterResult })
         })
