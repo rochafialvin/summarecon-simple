@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from '../config/axios'
 // Digunakan untuk menghubungkan komponen dengan redux
 import { connect } from 'react-redux'
 // Import action creator
@@ -14,7 +14,7 @@ class Login extends Component {
         let _pswd = this.password.value
 
         // Get data with parameters
-        let link = 'http://localhost:2020/users'
+        let link = '/users'
         let data = {username : _username, pswd: _pswd}
         
         axios.get(link,{params : data}).then((res) => {

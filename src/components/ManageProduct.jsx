@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from '../config/axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Swal from 'sweetalert2'
 
@@ -43,7 +43,7 @@ class ManageProduct extends Component{
     // Ambil data
     getData = () => {
         axios.get(
-            'http://localhost:2020/products'
+            '/products'
         ).then((res) => {
             this.setState({ products: res.data, modal : false })
         })
@@ -59,7 +59,7 @@ class ManageProduct extends Component{
         
         // Taruh data ke database "db.json"
         axios.post(
-            'http://localhost:2020/products',
+            '/products',
             {   
                 name: name_source,
                 desc: desc_source,
@@ -90,7 +90,7 @@ class ManageProduct extends Component{
           }).then((res) => {
             // res.value bernilai true jika kita memilih 'Ya' , sebaliknya
             if (res.value) {
-                axios.delete(`http://localhost:2020/products/${id}`)
+                axios.delete(`/products/${id}`)
                 .then((res) => { 
 
                     Swal.fire(
@@ -110,7 +110,7 @@ class ManageProduct extends Component{
     // Edit
     onEditToggle = (id) => {
         // res.data = {id, name, price, desc, src}
-        axios.get(`http://localhost:2020/products/${id}`)
+        axios.get(`/products/${id}`)
         .then((res) => { 
             this.setState({ modal : true, editProduct : res.data })
          })
@@ -129,7 +129,7 @@ class ManageProduct extends Component{
 
         // Edit data
         axios.patch(
-            `http://localhost:2020/products/${this.state.editProduct.id}`,
+            `/products/${this.state.editProduct.id}`,
             {
                 name, price, desc, src
             }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import {Link} from 'react-router-dom'
+import axios from '../config/axios'
+import ProductItem from './ProductItem'
 
 class Home extends Component {
 
@@ -14,7 +14,7 @@ class Home extends Component {
     }
 
     getProducts = () => {
-        axios.get('http://localhost:2020/products')
+        axios.get('/products')
         .then((res) => {
             this.setState({ products: res.data })
         })
@@ -27,27 +27,13 @@ class Home extends Component {
             product.price = product.price.toLocaleString('in')
 
             return (
-                <div key={product.id} className="card col-lg-5 col-xl-3 mx-auto mx-xl-4 my-3">
-                    <img className="card-img-top" src={product.src} alt=""/>
-                    <div className="card-body">
-                        <div  style={{height: 50}}>
-                            <h5 className="card-title">{product.name}</h5>
-                        </div>
-                        <p className="card-text">{product.desc}</p>
-                        <p className="card-text">Rp. {product.price}</p>
-                        <input className="form-control" type="text" placeholder="Jumlah Qty"/>
-                        <Link to={`/detailproduct/${product.id}`}>
-                            <button className="btn btn-secondary btn-block my-2">Detail</button>
-                        </Link>
-                        <button className="btn btn-primary btn-block">Add to Cart</button>
-                    </div>
-                </div>
+                <ProductItem product={product}  />
             )
         })
     }
 
     onBtnSearch = () => {
-        axios.get('http://localhost:2020/products')
+        axios.get('/products')
         .then((res) => {
             
             let keyword = this.name.value

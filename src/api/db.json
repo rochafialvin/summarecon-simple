@@ -17,6 +17,12 @@
       "email": "rochafi26@gmail.com",
       "pswd": "satuduatiga",
       "id": 3
+    },
+    {
+      "username": "nyan",
+      "email": "nyan@gmail.com",
+      "pswd": "nyan99",
+      "id": 4
     }
   ],
   "products": [
