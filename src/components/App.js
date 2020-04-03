@@ -15,29 +15,44 @@ import {connect} from 'react-redux'
 
 class App extends Component{
 
+    // Untuk menentukan status apakah localStorage sudah di cek atau belum
+    state = {
+        check : false
+    }
+
 
     componentDidMount(){
+        // Pengecekan localStorage
         let userData = localStorage.getItem('userData')
         let user = JSON.parse(userData)
 
         if(user){
             this.props.onLoginUser(user)
         }
+        
+        // Update stat untuk menandakan bahwa localStorage sudah di cek
+        this.setState({check: true})
     }
 
     render(){
-        return(
-            <BrowserRouter>
-                <div>
-                    <Header/>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/register" component={Register} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/manageproduct" component={ManageProduct} />
-                    <Route path="/detailproduct/:idPrdct" component={DetailProduct} />
-                </div>
-            </BrowserRouter>
-        )
+        // Jika belum cek localStorage (saat pertama kali running / refresh browser / mengunjungi halam via link broswer)
+        // maka akan ditampilkan tulisan 'Loading'
+        if(this.state.check){
+            return(
+                <BrowserRouter>
+                    <div>
+                        <Header/>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/register" component={Register} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/manageproduct" component={ManageProduct} />
+                        <Route path="/detailproduct/:idPrdct" component={DetailProduct} />
+                    </div>
+                </BrowserRouter>
+            )
+        }
+
+        return <h1> Loading </h1>
     }
 }
 

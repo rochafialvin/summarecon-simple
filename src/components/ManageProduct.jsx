@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from '../config/axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Swal from 'sweetalert2'
+import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 import ModalEdit from './ModalEdit'
 
@@ -147,50 +149,60 @@ class ManageProduct extends Component{
 
     // 1
     render(){
-        return (
-            <div className="container">
-                {/* List Product */}
-                <h1 className="text-center display-4">Manage Product</h1>
-                <table className="table table-hover text-center mb-5">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">NAME</th>
-                            <th scope="col">DESC</th>
-                            <th scope="col">PRICE</th>
-                            <th scope="col">PICTURE</th>
-                            <th scope="col">ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderList()}
-                    </tbody>
-                </table>
-
-                {/* Input Procduct */}
-                <h1 className="text-center display-4">Input Product</h1>
-                <table className="table table-hover text-center mb-5">
-                    <thead>
-                        <tr>
-                            <td scope="col"> <input ref={(input) => {this.name = input}} placeholder="name" className='form-control' type="text" /> </td>
-                            <td scope="col"> <input ref={(input) => {this.desc = input}} placeholder="description" className='form-control' type="text" /> </td>
-                            <td scope="col"> <input ref={(input) => {this.price = input}} placeholder="price" className='form-control' type="text" /> </td>
-                            <td scope="col"> <input ref={(input) => {this.src = input}} placeholder="image" className='form-control' type="text" /> </td>
-                            <td scope="col"> <button onClick={this.onAddProduct}  className="btn btn-outline-primary btn-block btn-sm">input</button> </td>
-                        </tr>
-                    </thead>
-                </table>
-
-                {/* Modal Component */}
-                <ModalEdit 
-                    a={this.state.modal} 
-                    b={this.state.editProduct}
-                    c={this.onCancelToggle}
-                    d={this.onSaveProduct}
-                />
-            </div>
-        )
+        if(this.props.usrname){ // Jika sudah login
+            return (
+                <div className="container">
+                    {/* List Product */}
+                    <h1 className="text-center display-4">Manage Product</h1>
+                    <table className="table table-hover text-center mb-5">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">NAME</th>
+                                <th scope="col">DESC</th>
+                                <th scope="col">PRICE</th>
+                                <th scope="col">PICTURE</th>
+                                <th scope="col">ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.renderList()}
+                        </tbody>
+                    </table>
+    
+                    {/* Input Procduct */}
+                    <h1 className="text-center display-4">Input Product</h1>
+                    <table className="table table-hover text-center mb-5">
+                        <thead>
+                            <tr>
+                                <td scope="col"> <input ref={(input) => {this.name = input}} placeholder="name" className='form-control' type="text" /> </td>
+                                <td scope="col"> <input ref={(input) => {this.desc = input}} placeholder="description" className='form-control' type="text" /> </td>
+                                <td scope="col"> <input ref={(input) => {this.price = input}} placeholder="price" className='form-control' type="text" /> </td>
+                                <td scope="col"> <input ref={(input) => {this.src = input}} placeholder="image" className='form-control' type="text" /> </td>
+                                <td scope="col"> <button onClick={this.onAddProduct}  className="btn btn-outline-primary btn-block btn-sm">input</button> </td>
+                            </tr>
+                        </thead>
+                    </table>
+    
+                    {/* Modal Component */}
+                    <ModalEdit 
+                        a={this.state.modal} 
+                        b={this.state.editProduct}
+                        c={this.onCancelToggle}
+                        d={this.onSaveProduct}
+                    />
+                </div>
+            )
+        } else {
+            return <Redirect to="/"/>
+        }
     }
 }
 
-export default ManageProduct
+let mapStateToProps = (state) => {
+    return {
+        usrname : state.auth.username
+    }
+}
+
+export default connect(mapStateToProps)(ManageProduct)

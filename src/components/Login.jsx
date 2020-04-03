@@ -38,9 +38,9 @@ class Login extends Component {
 
         if(!this.props.uname){ // Jika belum login
             return (
-                <div className="container-fluid login">
-                    <div className="row">
-                        <div className=" col-5 mx-auto card">
+                <div className="container-fluid">
+                    <div className="row login ">
+                        <div className=" col-5 my-auto mx-auto card">
                             <div className="card-body">
                                 <div className="border-bottom border-secondary card-title text-center">
                                     <h1>Login</h1>
@@ -58,7 +58,7 @@ class Login extends Component {
                                     <input ref={(input) => {this.password = input}} type='password' className='form-control'/>
                                 </forml>
     
-                                <button className="btn btn-success btn-block" onClick={this.onButtonClick}>Login</button>
+                                <button className="btn btn-success btn-block mt-3" onClick={this.onButtonClick}>Login</button>
                             </div>
                         </div>
                     </div>
