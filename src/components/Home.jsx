@@ -54,14 +54,14 @@ class Home extends Component {
             let min = parseInt(this.min.value) 
             let max = parseInt(this.max.value)
             let filterResult = []
-
+        
             if(isNaN(min) && isNaN(max)){ // Search by Name
                 filterResult = res.data.filter((data) => {
                     return (
                         data.name.toLowerCase().includes(keyword.toLowerCase())
                     )
                 })
-
+        
             } else if (isNaN(max)){
                 filterResult = res.data.filter((data) => { // Search by Minimum and Name
                     return (
@@ -69,7 +69,7 @@ class Home extends Component {
                         data.price >= min
                     )
                 })
-
+        
             } else if (isNaN(min)){
                 filterResult = res.data.filter((data) => { // Search by Maximum and Name
                     return (
@@ -77,7 +77,7 @@ class Home extends Component {
                         data.price <= max
                     )
                 })
-
+        
             } else {
                 filterResult = res.data.filter((data) => { // Search by Name, Minimum, and Maximum
                     return (
@@ -88,11 +88,13 @@ class Home extends Component {
                 })
             }
             
-
+        
             this.setState({ products: filterResult })
         })
 
     }
+
+
 
     render() {
         return (
@@ -116,7 +118,7 @@ class Home extends Component {
                                     <input ref={ (input) => { this.max = input } } placeholder="Maximum" className="form-control" type="text"/>
 
                                     <button onClick={this.onBtnSearch} className="btn btn-block btn-outline-primary mt-5" >Search</button>
-                                    <button className="btn btn-block btn-outline-danger" >Reset</button>
+                                    <button onClick={this.getProducts} className="btn btn-block btn-outline-danger" >Reset</button>
                                 </div>
 
                             </div>
@@ -134,3 +136,92 @@ class Home extends Component {
 }
 
 export default Home
+
+
+
+// (res) => {
+            
+//     let keyword = this.name.value
+//     let min = parseInt(this.min.value)
+//     let max = parseInt(this.max.value)
+//     let filterResult = []
+
+  
+//     // price
+//     if (!(keyword == "" )){
+//          filterResult = res.data.filter((product) => {
+//         return (
+//             product.name.toLowerCase().includes(keyword.toLowerCase()))
+//         })
+//     }   
+    
+//     else if (!(min == NaN)){
+//         filterResult = res.data.filter((product) => {
+//             return (product.price >= min)
+//         })
+//     }
+    
+//     else if (!(max == NaN)){
+//         alert("Hello")
+//         filterResult = res.data.filter((product) => {
+//             return (product.price <= max)
+//          })
+//     }
+
+//     else {
+//         filterResult = res.data.filter((product) => {
+//             return (product.price >= min && 
+//                     product.price <= max &&
+//                     product.name.toLowerCase().includes(keyword.toLowerCase()))
+//         })
+//     }
+    
+
+//     this.setState({ products: filterResult })
+// }
+
+
+
+// (res) => {
+            
+//     let keyword = this.name.value
+//     let min = parseInt(this.min.value) 
+//     let max = parseInt(this.max.value)
+//     let filterResult = []
+
+//     if(isNaN(min) && isNaN(max)){ // Search by Name
+//         filterResult = res.data.filter((data) => {
+//             return (
+//                 data.name.toLowerCase().includes(keyword.toLowerCase())
+//             )
+//         })
+
+//     } else if (isNaN(max)){
+//         filterResult = res.data.filter((data) => { // Search by Minimum and Name
+//             return (
+//                 data.name.toLowerCase().includes(keyword.toLowerCase())&&
+//                 data.price >= min
+//             )
+//         })
+
+//     } else if (isNaN(min)){
+//         filterResult = res.data.filter((data) => { // Search by Maximum and Name
+//             return (
+//                 data.name.toLowerCase().includes(keyword.toLowerCase())&&
+//                 data.price <= max
+//             )
+//         })
+
+//     } else {
+//         filterResult = res.data.filter((data) => { // Search by Name, Minimum, and Maximum
+//             return (
+//                 data.name.toLowerCase().includes(keyword.toLowerCase()) &&
+//                 data.price >= min &&
+//                 data.price <= max
+//             )
+//         })
+//     }
+    
+
+//     this.setState({ products: filterResult })
+// }

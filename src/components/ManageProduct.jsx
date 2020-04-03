@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import Swal from 'sweetalert2'
 
 import ModalEdit from './ModalEdit'
 
@@ -75,8 +76,35 @@ class ManageProduct extends Component{
     // Delete Data
     // http://localhost:2020/products/5
     onDeleteProduct = (id) => {
-        axios.delete(`http://localhost:2020/products/${id}`)
-        .then((res) => { this.getData() })
+        // axios.delete(`http://localhost:2020/products/${id}`)
+        // .then((res) => { this.getData() })
+
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: "Kamu tidak bisa mengembalikannya lagi!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya!'
+          }).then((res) => {
+            // res.value bernilai true jika kita memilih 'Ya' , sebaliknya
+            if (res.value) {
+                axios.delete(`http://localhost:2020/products/${id}`)
+                .then((res) => { 
+
+                    Swal.fire(
+                        'Berhasil!',
+                        'Produk berhasil di hapus.',
+                        'success'
+                    )
+
+                    this.getData() 
+                
+                })
+            
+            }
+          })
     }
 
     // Edit
