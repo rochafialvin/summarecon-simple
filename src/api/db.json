@@ -53,13 +53,35 @@
       "desc": "Lorem ipsum dolor sit amet",
       "price": 178000,
       "src": "https://raddevon.com/wp-content/uploads/2018/10/react.jpg"
+    }
+  ],
+  "carts": [
+    {
+      "idProduct": 1,
+      "username": "rochafi",
+      "qty": 5,
+      "desc": "Lorem ipsum dolor sit amet",
+      "price": 205000,
+      "src": "https://raddevon.com/wp-content/uploads/2018/10/react.jpg",
+      "id": 1
     },
     {
-      "name": "asas",
-      "desc": "asasa",
-      "price": null,
-      "src": "asas",
-      "id": 5
+      "idProduct": 3,
+      "username": "rochafi",
+      "qty": 4,
+      "desc": "Lorem ipsum dolor sit amet",
+      "price": 235000,
+      "src": "https://raddevon.com/wp-content/uploads/2018/10/react.jpg",
+      "id": 2
+    },
+    {
+      "idProduct": 4,
+      "username": "nyan",
+      "qty": 3,
+      "desc": "Lorem ipsum dolor sit amet",
+      "price": 178000,
+      "src": "https://raddevon.com/wp-content/uploads/2018/10/react.jpg",
+      "id": 3
     }
   ]
 }

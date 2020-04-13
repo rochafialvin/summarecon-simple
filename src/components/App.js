@@ -8,6 +8,7 @@ import Register from './Register'
 import Login from './Login'
 import ManageProduct from './ManageProduct'
 import DetailProduct from './DetailProduct'
+import Carts from './Carts'
 
 // Keeplogin
 import {onLoginUser} from '../actions/index'
@@ -45,6 +46,7 @@ class App extends Component{
                         <Route path="/" exact component={Home} />
                         <Route path="/register" component={Register} />
                         <Route path="/login" component={Login} />
+                        <Route path="/carts" component={Carts} />
                         <Route path="/manageproduct" component={ManageProduct} />
                         <Route path="/detailproduct/:idPrdct" component={DetailProduct} />
                     </div>

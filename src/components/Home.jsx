@@ -24,7 +24,7 @@ class Home extends Component {
         return this.state.products.map((product) => {
 
             // Untuk memisahkan setiap 3 digit angka dengan karakter titik.
-            product.price = product.price.toLocaleString('in')
+            // product.price = product.price.toLocaleString('in')
 
             return (
                 <ProductItem product={product}  />

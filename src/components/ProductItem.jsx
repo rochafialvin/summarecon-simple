@@ -1,12 +1,44 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
+import axios from '../config/axios'
+import swal from 'sweetalert2'
 
-export default class ProductItem extends Component {
+class ProductItem extends Component {
 
    addToCart = () => {
-      let quantity = this.qty.value
+      let idProduct = this.props.product.id
+      let username = this.props.username
+      let qty = parseInt(this.qty.value)
+      let desc = this.props.product.desc
+      let price = this.props.product.price
+      let src = this.props.product.src
 
-      // Post ke carts
+      // Periksa apakah user sudah pernah menambahkan product ini ke carts
+      axios.get('/carts', {
+         params: {
+            idProduct, username
+         }
+      }).then((res) => {
+         // res.data = [ { id : 3, idProduct: 2, username : "rochafi", qty: 3, ... } ]
+         // Jika produk saat ini belum ada di cart
+         if(res.data.length === 0){
+            // post ke carts
+            axios.post('/carts', { idProduct, username, qty, desc, price, src })
+               .then((res) => {
+                  alert('Produk berhasil ditambahkan')
+               })
+         } else {
+            let idCart = res.data[0].id
+            let newQty = res.data[0].qty + qty
+
+            axios.patch(`/carts/${idCart}`, {qty : newQty})
+               .then((res) => {
+                  alert('Produk berhasil di-update')
+               })
+         }
+      })
+
    }
 
    render() {
@@ -29,3 +61,11 @@ export default class ProductItem extends Component {
       )
    }
 }
+
+let mapStateToProps = state => {
+   return {
+      username: state.auth.username
+   }
+}
+
+export default connect(mapStateToProps)(ProductItem)
