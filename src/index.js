@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 // createStore akan mengolah hasil dari combineReducers
 import {createStore} from 'redux'
+// import bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './components/App'
 // import hasil combineReducer (belum siap pakai)

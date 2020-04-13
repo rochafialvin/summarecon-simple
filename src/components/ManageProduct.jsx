@@ -70,6 +70,7 @@ class ManageProduct extends Component{
             }
 
         ).then((res) => {
+            this.name.value = this.desc.value = this.price.value = this.src.value = ""
             this.getData()
         })
 
@@ -153,7 +154,7 @@ class ManageProduct extends Component{
             return (
                 <div className="container">
                     {/* List Product */}
-                    <h1 className="text-center display-4">Manage Product</h1>
+                    <h1 className="text-center display-4 ">Manage Product</h1>
                     <table className="table table-hover text-center mb-5">
                         <thead>
                             <tr>

@@ -10,7 +10,10 @@ export default class DetailProduct extends Component {
     componentDidMount() {
         axios.get(`/products/${this.props.match.params.idPrdct}`)
         .then((res) => {
-            this.setState({ product: res.data })
+
+            let price = res.data.price.toLocaleString('in')
+
+            this.setState({ product: {...res.data, price} })
         })
     }
 

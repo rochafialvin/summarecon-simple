@@ -31,28 +31,35 @@
       "name": "Hoodie Red",
       "desc": "Lorem ipsum dolor sit amet",
       "price": 205000,
-      "src": "https://www.pngfind.com/pngs/m/162-1621689_cloud9-lcs-jersey-cloud-9-csgo-jersey-hd.png"
+      "src": "https://raddevon.com/wp-content/uploads/2018/10/react.jpg"
     },
     {
       "id": 2,
       "name": "Sepatu Piero",
       "desc": "Lorem ipsum dolor sit amet",
       "price": 150000,
-      "src": "https://www.pngfind.com/pngs/m/162-1621689_cloud9-lcs-jersey-cloud-9-csgo-jersey-hd.png"
+      "src": "https://raddevon.com/wp-content/uploads/2018/10/react.jpg"
     },
     {
       "id": 3,
       "name": "Sandals Swelow",
       "desc": "Lorem ipsum dolor sit amet",
       "price": 235000,
-      "src": "https://www.pngfind.com/pngs/m/162-1621689_cloud9-lcs-jersey-cloud-9-csgo-jersey-hd.png"
+      "src": "https://raddevon.com/wp-content/uploads/2018/10/react.jpg"
     },
     {
       "id": 4,
       "name": "T-Shirt O Neck",
       "desc": "Lorem ipsum dolor sit amet",
       "price": 178000,
-      "src": "https://www.pngfind.com/pngs/m/162-1621689_cloud9-lcs-jersey-cloud-9-csgo-jersey-hd.png"
+      "src": "https://raddevon.com/wp-content/uploads/2018/10/react.jpg"
+    },
+    {
+      "name": "asas",
+      "desc": "asasa",
+      "price": null,
+      "src": "asas",
+      "id": 5
     }
   ]
 }
